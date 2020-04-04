@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react"
 import Proptypes from "prop-types"
 import { Link } from 'react-router-dom'
 import dayjs from 'dayjs'
-import EditDetails from '../components/EditDetails'
+import EditDetails from './EditDetails'
 
 // mui stuff
 import withStyles from "@material-ui/core/styles/withStyles"
