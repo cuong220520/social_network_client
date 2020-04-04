@@ -1,17 +1,24 @@
-import { SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, LOADING_USER } from '../types'
-import axios from 'axios'
+import {
+    SET_USER,
+    SET_ERRORS,
+    CLEAR_ERRORS,
+    LOADING_UI,
+    SET_UNAUTHENTICATED,
+    LOADING_USER
+} from "../types"
+import axios from "axios"
 
-export const loginUser = (userData, history) => (dispatch) => {
+export const loginUser = (userData, history) => dispatch => {
     dispatch({ type: LOADING_UI })
     axios
-        .post('/login', userData)
+        .post("/login", userData)
         .then(res => {
             setAuthorizationHeader(res.data.token)
 
             dispatch(getUserData())
             dispatch({ type: CLEAR_ERRORS })
 
-            history.push('/')
+            history.push("/")
         })
         .catch(err => {
             dispatch({
@@ -21,17 +28,17 @@ export const loginUser = (userData, history) => (dispatch) => {
         })
 }
 
-export const signupUser = (newUserData, history) => (dispatch) => {
+export const signupUser = (newUserData, history) => dispatch => {
     dispatch({ type: LOADING_UI })
     axios
-        .post('/signup', newUserData)
+        .post("/signup", newUserData)
         .then(res => {
             setAuthorizationHeader(res.data.token)
 
             dispatch(getUserData())
             dispatch({ type: CLEAR_ERRORS })
 
-            history.push('/')
+            history.push("/")
         })
         .catch(err => {
             dispatch({
@@ -41,15 +48,16 @@ export const signupUser = (newUserData, history) => (dispatch) => {
         })
 }
 
-export const logoutUser = () => (dispatch) => {
-    localStorage.removeItem('fbIdToken')
-    delete axios.defaults.headers.common['Authorization']
+export const logoutUser = () => dispatch => {
+    localStorage.removeItem("fbIdToken")
+    delete axios.defaults.headers.common["Authorization"]
     dispatch({ type: SET_UNAUTHENTICATED })
 }
 
-export const getUserData = () => (dispatch) => {
+export const getUserData = () => dispatch => {
     dispatch({ type: LOADING_USER })
-    axios.get('/user')
+    axios
+        .get("/user")
         .then(res => {
             dispatch({
                 type: SET_USER,
@@ -61,23 +69,10 @@ export const getUserData = () => (dispatch) => {
         })
 }
 
-export const uploadImage = (formData) => (dispatch) => {
+export const uploadImage = formData => dispatch => {
     dispatch({ type: LOADING_USER })
     axios
-        .post('/user/image', formData)
-        .then(() => {
-            dispatch(getUserData())
-
-        })
-        .catch(err => {
-            console.log(err)
-        })
-}
-
-export const editUserDetails = (userDetails) => (dispatch) => {
-    dispatch({ type: LOADING_USER })
-    axios
-        .post('/user', userDetails)
+        .post("/user/image", formData)
         .then(() => {
             dispatch(getUserData())
         })
@@ -86,9 +81,21 @@ export const editUserDetails = (userDetails) => (dispatch) => {
         })
 }
 
-const setAuthorizationHeader = (token) => {
+export const editUserDetails = userDetails => dispatch => {
+    dispatch({ type: LOADING_USER })
+    axios
+        .post("/user", userDetails)
+        .then(() => {
+            dispatch(getUserData())
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+const setAuthorizationHeader = token => {
     const fbIdToken = `Bearer ${token}`
 
-    localStorage.setItem('fbIdToken', fbIdToken)
-    axios.defaults.headers.common['Authorization'] = fbIdToken
+    localStorage.setItem("fbIdToken", fbIdToken)
+    axios.defaults.headers.common["Authorization"] = fbIdToken
 }
