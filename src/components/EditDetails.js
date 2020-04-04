@@ -18,6 +18,7 @@ import EditIcon from '@material-ui/icons/Edit'
 // redux stuff
 import { connect } from 'react-redux'
 import { editUserDetails } from '../redux/actions/userActions'
+import MyButton from "../util/MyButton"
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -77,11 +78,9 @@ class EditDetails extends Component {
 
         return (
             <Fragment>
-                <Tooltip title="Edit details" placement="top">
-                    <IconButton onClick={ this.handleOpen } className={ classes.button }>
-                        <EditIcon color="primary"/>
-                    </IconButton>
-                </Tooltip>
+                <MyButton tip="Edit details" onClick={ this.handleOpen } btnClassName={ classes.button }>
+                    <EditIcon color="primary"/>
+                </MyButton>
                 <Dialog 
                     open={ this.state.open }
                     onClose={ this.handleClose }

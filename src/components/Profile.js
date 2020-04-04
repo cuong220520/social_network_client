@@ -10,8 +10,7 @@ import Button from "@material-ui/core/Button"
 import MuiLink from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-import { IconButton } from "@material-ui/core"
-import Tooltip from '@material-ui/core/Tooltip'
+import MyButton from "../util/MyButton"
 
 // icons
 import LocationOn from '@material-ui/icons/LocationOn'
@@ -68,11 +67,9 @@ class Profile extends Component {
                     <div className="image-wrapper">
                         <img src={ imageUrl } alt="profile" className="profile-image"/>
                         <input type="file" id="imageInput" hidden="hidden" onChange={ this.handleImageChange }/>
-                        <Tooltip title="Edit profile image" placement="top">
-                            <IconButton onClick={ this.handleEditPicture } className="buttons">
-                                <EditIcon color="primary"/>
-                            </IconButton>
-                        </Tooltip>
+                        <MyButton tip="Edit profile image" onClick={ this.handleEditPicture } btnClassName="buttons">
+                            <EditIcon color="primary"/>
+                        </MyButton>
                     </div>
                     <hr/>
                     <div className="profile-details">
@@ -100,11 +97,9 @@ class Profile extends Component {
                         <CalendarToday color="primary"/>{ '  ' }
                         <span>Joined { dayjs(createAt).format('MMM YYYY') }</span>
                     </div>
-                    <Tooltip title="Logout" placement="top">
-                        <IconButton onClick={ this.handleLogout }>
-                            <KeyboardReturn color="primary"/>
-                        </IconButton>
-                    </Tooltip>
+                    <MyButton tip="Logout" onClick={ this.handleLogout }>
+                        <KeyboardReturn color="primary"/>
+                    </MyButton>
                     <EditDetails/>
                 </div>
             </Paper>
