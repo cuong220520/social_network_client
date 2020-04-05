@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react"
-import Proptypes from "prop-types"
+import PropTypes from "prop-types"
 
 // mui stuff
 import withStyles from "@material-ui/core/styles/withStyles"
-import Tooltip from "@material-ui/core/Tooltip"
-import IconButton from "@material-ui/core/IconButton"
 import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
 import DialogTitle from "@material-ui/core/DialogTitle"
@@ -145,8 +143,8 @@ class EditDetails extends Component {
 }
 
 EditDetails.propTypes = {
-    editUserDetails: Proptypes.func.isRequired,
-    classes: Proptypes.object.isRequired
+    editUserDetails: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
