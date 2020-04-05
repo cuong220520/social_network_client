@@ -17,7 +17,7 @@ import CloseIcon from "@material-ui/icons/Close"
 
 // redux stuff
 import { connect } from "react-redux"
-import { postScream } from "../redux/actions/dataActions"
+import { postScream, clearErrors } from "../redux/actions/dataActions"
 
 const styles = theme => ({
     ...theme.spreadThis,
@@ -51,8 +51,7 @@ class PostScream extends Component {
         }
         
         if (!nextProps.ui.errors && !nextProps.ui.loading) {
-            this.setState({ body: '' })
-            this.handleClose()
+            this.setState({ body: '', open: false, errors: {} })
         }
     }
 
@@ -61,6 +60,7 @@ class PostScream extends Component {
     }
  
     handleClose = () => {
+        this.props.clearErrors()
         this.setState({ open: false, errors: {} })
     }
 
@@ -142,13 +142,14 @@ class PostScream extends Component {
 
 PostScream.propTypes = {
     postScream: PropTypes.func.isRequired,
-    ui: PropTypes.object.isRequired
+    ui: PropTypes.object.isRequired,
+    clearErrors: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     ui: state.ui
 })
 
-export default connect(mapStateToProps, { postScream })(
+export default connect(mapStateToProps, { postScream, clearErrors })(
     withStyles(styles)(PostScream)
 )
