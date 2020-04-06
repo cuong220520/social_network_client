@@ -5,7 +5,8 @@ import {
     LIKE_SCREAM,
     UNLIKE_SCREAM,
     DELETE_SCREAM,
-    POST_SCREAM
+    POST_SCREAM,
+    SUBMIT_COMMENT
 
 } from "../types"
 
@@ -58,6 +59,15 @@ export default function(state = initialState, action) {
             }
             return {
                 ...state
+            }
+
+        case SUBMIT_COMMENT:
+            return {
+                ...state,
+                scream: {
+                    ...state.scream,
+                    comments: [action.payload, ...state.scream.comments]
+                }
             }
 
         case DELETE_SCREAM:
