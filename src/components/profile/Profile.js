@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button"
 import MuiLink from "@material-ui/core/Link"
 import Typography from "@material-ui/core/Typography"
 import Paper from "@material-ui/core/Paper"
-import MyButton from "../util/MyButton"
+import MyButton from "../../util/MyButton"
 
 // icons
 import LocationOn from "@material-ui/icons/LocationOn"
@@ -21,7 +21,7 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn"
 
 // redux stuff
 import { connect } from "react-redux"
-import { logoutUser, uploadImage } from "../redux/actions/userActions"
+import { logoutUser, uploadImage } from "../../redux/actions/userActions"
 
 const styles = theme => ({ ...theme.userProfile })
 

@@ -15,8 +15,8 @@ import EditIcon from "@material-ui/icons/Edit"
 
 // redux stuff
 import { connect } from "react-redux"
-import { editUserDetails } from "../redux/actions/userActions"
-import MyButton from "../util/MyButton"
+import { editUserDetails } from "../../redux/actions/userActions"
+import MyButton from "../../util/MyButton"
 
 const styles = theme => ({
     ...theme.spreadThis,
