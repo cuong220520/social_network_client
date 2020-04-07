@@ -21,7 +21,7 @@ class CommentForm extends Component {
         errors: {}
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.ui.errors) {
             this.setState({ errors: nextProps.ui.errors })
         }
@@ -29,6 +29,23 @@ class CommentForm extends Component {
             this.setState({ body: '', errors: {} })
         }
     }
+
+    // static getDerivedStateFromProps(props) {
+    //     if (props.ui.errors) {
+    //         return {
+    //             errors: props.ui.errors
+    //         }
+    //     }
+        
+    //     if (!props.ui.errors && !props.ui.loading) {
+    //         return {
+    //             state: {
+    //                 body: '', 
+    //                 errors: {}
+    //             }
+    //         }
+    //     }
+    // }
 
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value }) 

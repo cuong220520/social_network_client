@@ -29,7 +29,7 @@ class signup extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.ui.errors) {
             this.setState({ errors: nextProps.ui.errors })
         }
