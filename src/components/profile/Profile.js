@@ -82,7 +82,7 @@ class Profile extends Component {
                                 onClick={this.handleEditPicture}
                                 btnClassName="buttons"
                             >
-                                <EditIcon color="primary" />
+                                <EditIcon color="secondary" />
                             </MyButton>
                         </div>
                         <hr />
@@ -90,7 +90,7 @@ class Profile extends Component {
                             <MuiLink
                                 component={Link}
                                 to={`/user/${handle}`}
-                                color="primary"
+                                color="secondary"
                                 variant="h5"
                             >
                                 @{handle}
@@ -102,14 +102,14 @@ class Profile extends Component {
                             <hr />
                             {location && (
                                 <Fragment>
-                                    <LocationOn color="primary" />{" "}
+                                    <LocationOn color="secondary" />{" "}
                                     <span>{location}</span>
                                     <hr />
                                 </Fragment>
                             )}
                             {website && (
                                 <Fragment>
-                                    <LinkIcon color="primary" />
+                                    <LinkIcon color="secondary" />
                                     <a
                                         href={website}
                                         target="_blank"
@@ -121,14 +121,14 @@ class Profile extends Component {
                                     <hr />
                                 </Fragment>
                             )}
-                            <CalendarToday color="primary" />
+                            <CalendarToday color="secondary" />
                             {"  "}
                             <span>
                                 Joined {dayjs(createAt).format("MMM YYYY")}
                             </span>
                         </div>
                         <MyButton tip="Logout" onClick={this.handleLogout}>
-                            <KeyboardReturn color="primary" />
+                            <KeyboardReturn color="secondary" />
                         </MyButton>
                         <EditDetails />
                     </div>
@@ -142,7 +142,7 @@ class Profile extends Component {
                     <div className={classes.buttons}>
                         <Button
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             component={Link}
                             to="/login"
                         >

@@ -1,16 +1,16 @@
 export default {
     palette: {
         primary: {
-            light: "#ed4b82",
-            main: "#e91e63",
-            dark: "#a31545",
-            contrastText: "#fff"
+            //light: "#ed4b82",
+            main: "#fff",
+            dark: "#f50057",
+            //contrastText: "#00bfa5"
         },
         secondary: {
-            light: "#33cbb7",
-            main: "#00bfa5",
-            dark: "#008573",
-            contrastText: "#fff"
+            //light: "#33cbb7",
+            main: "#1c1e21",
+            //dark: "#008573",
+            //contrastText: "#fff"
         }
     },
     spreadThis: {
@@ -68,7 +68,7 @@ export default {
                     verticalAlign: "middle"
                 },
                 "& a": {
-                    color: "#00bcd4"
+                    color: "#1c1e21"
                 }
             },
             "& hr": {

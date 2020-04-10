@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MyButton from '../../util/MyButton'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import withStyles from '@material-ui/core/styles/withStyles'
 
 // icons stuff
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder"
@@ -10,6 +11,12 @@ import Favorite from "@material-ui/icons/Favorite"
 // redux stuff 
 import { connect } from "react-redux"
 import { likeScream, unlikeScream } from "../../redux/actions/dataActions"
+
+const styles = {
+    likeIconColor: {
+        color: "#f50057"
+    }
+}
 
 export class LikeButton extends Component {
     likedScream = () => {
@@ -35,20 +42,21 @@ export class LikeButton extends Component {
 
     render() {
         const { authenticated } = this.props.user
+        const { classes } = this.props
         
         const likeButton = !authenticated ? (
             <Link to="/login">
                 <MyButton tip="like">
-                    <FavoriteBorder color="primary" />
+                    <FavoriteBorder  className={classes.likeIconColor} />
                 </MyButton>
             </Link>
         ) : this.likedScream() ? (
             <MyButton tip="Undo like" onClick={this.unlikeScream}>
-                <Favorite color="primary" />
+                <Favorite  className={classes.likeIconColor}/>
             </MyButton>
         ) : (
             <MyButton tip="Like" onClick={this.likeScream}>
-                <FavoriteBorder color="primary" />
+                <FavoriteBorder  className={classes.likeIconColor}/>
             </MyButton>
         )
 
@@ -64,7 +72,8 @@ LikeButton.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    classes: PropTypes.object.isRequired
 })
 
 const mapActionsToProps = {
@@ -72,4 +81,4 @@ const mapActionsToProps = {
     unlikeScream
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(LikeButton)
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(LikeButton))
